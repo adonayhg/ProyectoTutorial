@@ -33,7 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) //enter es para que avise la primera vez que toque una moneda
     {
-        if(other.CompareTag("CoinItem"))
+        if(other.CompareTag("CoinItem")) //tag se crean dentro de unity
         {
             monedasObtenidas = monedasObtenidas +1;
         }
