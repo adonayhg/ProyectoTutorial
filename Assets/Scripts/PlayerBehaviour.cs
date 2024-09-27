@@ -10,6 +10,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float movementSpeed = 5f;
     public int monedasObtenidas = 0;
     public TextMeshProUGUI coinsText; //variable para mostrar texto en la pantalla del juego
+    public AudioClip coinSFX; //variable para poner sonido desde el inspector
+    public AudioClip specialCoinSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +38,13 @@ public class PlayerBehaviour : MonoBehaviour
         if(other.CompareTag("CoinItem")) //tag se crean dentro de unity
         {
             monedasObtenidas = monedasObtenidas +1;
+            AudioSource.PlayClipAtPoint(coinSFX, transform.position); //para que reproduzca el sonido en ese momento
         }
 
         else if(other.CompareTag("SpecialCoinItem"))
         {
             monedasObtenidas = monedasObtenidas + 5;
+            AudioSource.PlayClipAtPoint(specialCoinSFX, transform.position); //para que reproduzca el sonido en ese momento
         }
 
         Debug.Log("He tocado " + monedasObtenidas + " monedas");
@@ -49,6 +53,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
         coinsText.text = monedasObtenidas.ToString(); //hacer que el texto de la consola se vea en la pantalla
         other.gameObject.SetActive(false); //hacer que desaparezca el objeto despues de tocarlo
+            
+     
         }
     }
     
